@@ -11,26 +11,6 @@ import { fileURLToPath } from 'node:url';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 
-function loadEnvFile() {
-  const p = join(root, '.env');
-  if (!existsSync(p)) return;
-  for (let line of readFileSync(p, 'utf8').split(/\r?\n/)) {
-    line = line.trim();
-    if (!line || line.startsWith('#')) continue;
-    const eq = line.indexOf('=');
-    if (eq <= 0) continue;
-    const key = line.slice(0, eq).trim();
-    let val = line.slice(eq + 1).trim();
-    if (
-      (val.startsWith('"') && val.endsWith('"')) ||
-      (val.startsWith("'") && val.endsWith("'"))
-    ) {
-      val = val.slice(1, -1);
-    }
-    if (process.env[key] === undefined) process.env[key] = val;
-  }
-}
-
 function expandPath(p) {
   if (!p) return p;
   return p.replace(/^~(?=\/|\\|$)/, homedir());
@@ -85,8 +65,6 @@ function launch(binary, userDataDir, profileDir, extDir, label) {
   child.unref();
   console.log(`[helium] Launched "${label}" (profile dir: ${profileDir}, user data: ${userDataDir})`);
 }
-
-loadEnvFile();
 
 const binary = resolveBinary();
 if (!binary) {
