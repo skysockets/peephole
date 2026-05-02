@@ -16,9 +16,9 @@
   },
   "devDependencies": {
     "typescript": "^5.9.3",
-    "wxt": "^0.20.25"
+    "wxt": "^0.20.25",
+    "concurrently": "^9.2.1"
   },
   "dependencies": {
-    "concurrently": "^9.2.1"
   }
 }

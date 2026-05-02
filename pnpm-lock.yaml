@@ -13,11 +13,10 @@ importers:
         version: 2.9.7
 
   apps/extension:
-    dependencies:
+    devDependencies:
       concurrently:
         specifier: ^9.2.1
         version: 9.2.1
-    devDependencies:
       typescript:
         specifier: ^5.9.3
         version: 5.9.3
