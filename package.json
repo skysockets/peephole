@@ -1,0 +1,13 @@
+{
+	"name": "@peephole/monorepo",
+	"private": true,
+	"scripts": {
+		"build": "turbo build",
+		"dev": "turbo dev",
+		"dev:extension": "pnpm --filter @peephole/extension dev"
+	},
+	"devDependencies": {
+        		"turbo": "^2.8.10"
+    },
+	"packageManager": "pnpm@10.28.0"
+}
